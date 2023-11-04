@@ -1,14 +1,11 @@
 import numpy as np
 import scipy as sp
-from PIL import Image
 import matplotlib.image
-import imageio.v3
 import os
 from skimage.metrics import structural_similarity as ssim
 
 inclusion_list = [1,2,3,4]
 categories_list = [1,4,7]
-categories_list = [7]
 
 folder_ground_truth = "GroundTruths"
 folder_training_data = "TrainingData"
@@ -70,4 +67,4 @@ if __name__ == "__main__":
         
         score_matrix.append(category_scores)
 
-    np.savetxt(folder_output_examples + "/" + "scores.txt", score_matrix, fmt='%4.3f')
+    np.savetxt(folder_output_examples + "/" + "scores.txt", np.array(score_matrix).T, fmt='%4.3f', delimiter='|')
